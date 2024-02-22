@@ -1,0 +1,158 @@
+{% load static %}
+{% static "image" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/01485634d3.js" crossorigin="anonymous"></script>
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .menu-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .menu-links a:hover {
+            color: #ffd700;
+            /* Change the color on hover */
+        }
+
+        /* Profile container styles */
+        .profile-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #fff;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .profile-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-actions a,
+        .profile-actions button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            /* Remove underlines from links */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .profile-actions a:hover,
+        .profile-actions button:hover {
+            background-color: #ffd700;
+            /* Change the background color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{% static 'vote.png' %}" alt="Your Logo">
+
+        </div>
+        <div class="menu-links">
+            <a href="{% url 'home' %}" class="active"><i style="margin-right: 5px"
+                    class="fa-solid fa-house"></i>Home</a>
+            <a href="#" class="active"><i style="margin-right: 5px" class="fa-solid fa-house"></i>FAQ</a>
+            <!-- Add other links here -->
+        </div>
+    </div>
+    <div class="profile-container">
+        <div class="profile-image">
+            S
+        </div>
+        <div class="profile-name">Registered as Student</div>
+        <div class="profile-info">
+            <h6>Your are:</h6>
+            <p>{{user.first_name}} {{user.last_name}}</p>
+            <h6>Your Student ID is:</h6>
+            <p>{{user.username}}</p>
+
+        </div>
+        <div class="profile-actions">
+
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/01485634d3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
