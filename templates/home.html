@@ -418,29 +418,30 @@
     <div class=" dashboard">
 
         <aside class="aside">
-            <span> <button class="menu-button aside-toggle" onclick="toggleAside()">☰</button></span>
+
 
             <ul>
                 <h4>Candidates</h6>
 
-                    <li><a href="javascript:void(0);" onclick="showContent('Item1')"> <span class="span"><i
+                    <li><a href="javascript:void(0);" onclick="showContent('Item1')"><span id="span " class="span"> <i
                                     class="fas fa-user"></i></span>
                             <strong>President</strong>
                         </a></li>
 
 
-                    <li><a href="javascript:void(0);" onclick="showContent('Item2')"> <span class="span"><i
+                    <li><a href="javascript:void(0);" onclick="showContent('Item2')"><span id="span " class="span"><i
                                     class="fas fa-user"></i></span> <strong>Vice
-                                President</strong></a></li>
-                    <li><a href="javascript:void(0);" onclick="showContent('Item3')"> <span class="span"><i
+                                President</strong> </a></li>
+                    <li><a href="javascript:void(0);" onclick="showContent('Item3')"><span id="span " class="span"><i
                                     class="fas fa-user"></i></span> <strong>General
-                                Secretary</strong></a></li>
-                    <li><a href="javascript:void(0);" onclick="showContent('Item4')"><span class="span"><i
+                                Secretary</strong>
+                        </a></li>
+                    <li><a href="javascript:void(0);" onclick="showContent('Item4')"><span id="span " class="span"><i
                                     class="fas fa-user"></i></span>
                             <strong>Accountant</strong></a></li>
             </ul>
             <ul class="logout-list">
-                <li><a href="{% url 'logout' %}"><span class="span"><i
+                <li><a href="{% url 'logout' %}"><span class="span" id="span"><i
                                 class=" fa-solid fa-right-from-bracket"></i></span>
                         <strong>Logout</strong></a>
                 </li>
@@ -827,19 +828,9 @@
                 easing: 'ease-in-out'
             });
         });
+        let asideState = 'normal'; // Define the initial state
 
 
-
-
-
-        function toggleAside() {
-            var aside = document.querySelector('.aside');
-            if (aside.style.maxWidth === "0px" || aside.style.maxWidth === "") {
-                aside.style.maxWidth = "300px";
-            } else {
-                aside.style.maxWidth = "0px";
-            }
-        }
 
         function showContent(item) {
             // Hide the 'cartoon' div
