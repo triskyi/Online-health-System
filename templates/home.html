@@ -12,22 +12,42 @@
     <script src="{% static 'script.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://kit.fontawesome.com/01485634d3.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: black;
         }
 
 
         .dashboard {
             display: flex;
             flex-wrap: wrap;
+
         }
 
         .main-content {
             flex: 4;
             padding: 20px;
+            margin-left: 15rem;
+            margin-top: 5rem;
+
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+        }
+
+        main {
+
+
+            margin: 10px;
+            padding: 10px;
+            align-items: center;
+
         }
 
         .widget {
@@ -39,15 +59,45 @@
         }
 
         .aside {
-            flex: 1;
-            background-color: #87CEEB;
+
+
             /* Sky blue background */
-            color: black;
+            color: white;
             /* White text color */
-            padding: 20px;
-            overflow: hidden;
+
+            background-color: #121212;
+            height: 100vh;
+            position: fixed;
             max-width: 300px;
             transition: all 0.5s;
+            margin-top: 3.5rem;
+            width: 500px;
+            padding: 20px;
+
+        }
+
+        .span {
+            height: 5rem;
+            width: inherit;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            font-family: monospace;
+            text-decoration: solid;
+            background: linear-gradient(to right, #4588a0, #af4c8c);
+            padding: 7px;
+            margin: 2px;
+        }
+
+
+
+
+        .logout-list {
+            margin-top: 50vh;
+            /* Push the logout list to the bottom */
+            margin-bottom: 10px;
+            /* Add some space between the logout list and the other content */
         }
 
         h1 {
@@ -65,14 +115,6 @@
         }
 
 
-        .header {
-            background-color: #3498db;
-            color: black;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
         .logo {
             display: flex;
@@ -123,13 +165,14 @@
 
         .aside ul li a {
             text-decoration: none;
-            color: black;
+
+            color: rgb(161, 166, 161);
             font-size: 18px;
             transition: color 0.3s;
         }
 
         .aside ul li a:hover {
-            color: green;
+            color: white;
         }
 
         ul.messages {
@@ -179,56 +222,238 @@
                 display: none;
             }
         }
+
+        nav.navbar {
+            background-color: rgba(8, 8, 8, 0.7);
+            /* Transparent black color */
+            position: fixed;
+            width: 100%;
+
+        }
+
+        .cartoon {
+            background-color: black;
+            border: none;
+
+            /* Adjust to 'contain' if needed */
+
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: row;
+            /* Display cards horizontally */
+            align-items: center;
+            /* Center cards vertically */
+            justify-content: space-around;
+            /* Add space around cards */
+            flex-wrap: wrap;
+            /* Allow cards to wrap to the next line if needed */
+        }
+
+
+        .vote-button {
+            background: linear-gradient(to right, #af4c8c, #4588a0);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 10px;
+            animation: bounce 5s infinite;
+            /* Slightly faster bouncing animation */
+            transition: background 5s ease-in-out;
+            /* Smooth transition for background color */
+        }
+
+        footer {
+            background-color: #343a40;
+            /* Dark background color */
+            color: #fff;
+            /* White text color */
+            padding: 40px 0;
+            /* Adjust padding as needed */
+        }
+
+        footer h5 {
+            color: #f8f9fa;
+            /* Lighter text color for headings */
+        }
+
+        footer p,
+        footer a {
+            color: #868e96;
+            /* Lighter text color */
+        }
+
+        footer a:hover {
+            color: #fff;
+            /* White text color on hover */
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li a {
+            color: #868e96;
+            /* Lighter text color for list items */
+        }
+
+        footer ul li a:hover {
+            color: #fff;
+            /* White text color on hover */
+        }
+
+        .cartoon {
+            align-items: center;
+            background-color: black;
+            background-size: cover;
+
+
+            /* Adjust to 'contain' if needed */
+
+        }
+
+
+        /* Add these styles to your existing CSS file */
+
+        .search-form {
+            display: block;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px 0 0 5px;
+            background-color: black;
+            color: white;
+            width: 700px;
+        }
+
+        .search-btn {
+
+            padding: 10px 15px;
+            border: none;
+            background-color: rgb(63, 61, 61);
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .h1 {
+            text-align: center;
+            color: skyblue;
+            font-size: 100px;
+            /* Adjust the font size as needed */
+            font-family: 'Arial', sans-serif;
+            /* Replace 'Arial' with your preferred font family */
+            text-align: center;
+            /* Center the text horizontally */
+            margin-top: 3rem;
+            /* Adjust margin-top as needed */
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="header">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="color: white; background-color:#121212">
         <div class="logo">
-            <img src="{% static 'vote.png' %}" alt="Your Logo">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'vote.png' %}" alt=" Your Logo" class="img-fluid">
+            </a>
         </div>
-        <div class="menu-links">
-            <a href="#" class="active"><i style="margin-right: 5px" class="fa-solid fa-house"></i>Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            {% if user.is_authenticated %}
-            <a href="{% url 'profile' %}"><i class="fa-sharp fa-solid fa-house-user"
-                    style="margin-right: 5px"></i>Profile</a>
-            <a href="#" class="active"><i style="margin-right: 5px" class="fa-solid fa-house"></i>FAQ</a>
-
-
-            {% else %}
-            <a href="{% url 'login' %}"><i class="fa-sharp fa-solid fa-house-user"
-                    style="margin-right: 5px"></i>login</a>
-            <a href="{% url 'register' %}"><i class="fa-sharp fa-solid fa-house-user"
-                    style="margin-right: 5px"></i>Register</a>
-
-            {% endif %} <!-- Add other links here -->
+        {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active rounded-circle" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-circle" href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-circle" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
-    </div>
+        {% else %}
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active rounded-circle" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active rounded-circle" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active rounded-circle" href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+
+    </nav>
+
+
     {% if user.is_authenticated %}
-    <div class="dashboard">
+    <div class=" dashboard">
 
         <aside class="aside">
-            <button class="menu-button aside-toggle" onclick="toggleAside()">☰</button>
+            <span> <button class="menu-button aside-toggle" onclick="toggleAside()">☰</button></span>
+
             <ul>
                 <h4>Candidates</h6>
-                    <li><a href="javascript:void(0);" onclick="showContent('Item1')"><i
-                                class="fas fa-user"></i><span>President</span></a></li>
 
-                    <li><a href="javascript:void(0);" onclick="showContent('Item2')"><i
-                                class="fas fa-user"></i><span>Vice
-                                President</span></a></li>
-                    <li><a href="javascript:void(0);" onclick="showContent('Item3')"><i
-                                class="fas fa-user"></i><span>General Secretary</span></a></li>
-                    <li><a href="javascript:void(0);" onclick="showContent('Item4')"><i
-                                class="fas fa-user"></i><span>Accountant</span></a></li>
+                    <li><a href="javascript:void(0);" onclick="showContent('Item1')"> <span class="span"><i
+                                    class="fas fa-user"></i></span>
+                            <strong>President</strong>
+                        </a></li>
+
+
+                    <li><a href="javascript:void(0);" onclick="showContent('Item2')"> <span class="span"><i
+                                    class="fas fa-user"></i></span> <strong>Vice
+                                President</strong></a></li>
+                    <li><a href="javascript:void(0);" onclick="showContent('Item3')"> <span class="span"><i
+                                    class="fas fa-user"></i></span> <strong>General
+                                Secretary</strong></a></li>
+                    <li><a href="javascript:void(0);" onclick="showContent('Item4')"><span class="span"><i
+                                    class="fas fa-user"></i></span>
+                            <strong>Accountant</strong></a></li>
+            </ul>
+            <ul class="logout-list">
+                <li><a href="{% url 'logout' %}"><span class="span"><i
+                                class=" fa-solid fa-right-from-bracket"></i></span>
+                        <strong>Logout</strong></a>
+                </li>
             </ul>
         </aside>
 
         <div class="main-content">
-            <h1>Welcome to our voting site</h1>
-            <p>Welcome, valued voter! We are excited to have you participate in our democratic process.</p>
+            {% if user.is_staff %}
+            <h1>Welcome, Admin!</h1>
+            {% else %}
+            <h1>Welcome, {{ user.first_name }} {{ user.last_name }}!</h1>
+            {% endif %}
+
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -236,6 +461,60 @@
                 {% endfor %}
             </ul>
             {% endif %}
+            <div class="container mt-5 cartoon" id="cartoon">
+                <h2 class="whyheading" id="services" style="color:#868e96 ;">STRATEGIC FOCUS AREAS</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+
+                        <div class="card"
+                            style="background: linear-gradient(90deg, rgba(38, 65, 200, 1) 0%, rgba(201, 21, 181, 1) 100%);">
+                            <i class="fa-solid fa-chess-board" style="font-size:100px; margin-top:10px;"></i>
+                            <div class="card-body">
+                                <h5 class="card-title"> <strong> Strategic Partnerships</strong></h5>
+                                <p class="card-text" style="font-size: 12px;  color:white"><strong> "Strategic alliance
+                                        with BUSA to enhance voting system accessibility and engagement
+                                        among Bugema University student community."</strong>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card"
+                            style="background: linear-gradient(90deg, rgba(38, 65, 200, 1) 0%, rgba(201, 21, 181, 1) 100%);">
+                            <i class="fa-solid fa-school" style="font-size:100px; margin-top:10px;"></i>
+                            <div class="card-body">
+                                <h5 class="card-title"> <strong>Education Dev</strong> </h5>
+                                <p class="card-text" style="font-size: 12px;  color:white"> <strong> "Empowering future
+                                        leaders through innovative educational initiatives fostering growth,
+
+                                        and excellence in learning and development."
+                                </p></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card"
+                            style="background: linear-gradient(90deg, rgba(38, 65, 200, 1) 0%, rgba(201, 21, 181, 1) 100%);">
+                            <i class="fa-solid fa-earth-africa" style="font-size:100px; margin-top:10px;"></i>
+                            <div class="card-body">
+                                <h5 class="card-title"> <strong>Global Vision</strong></h5>
+                                <p class="card-text" style="font-size: 12px;  color:white"> <strong>"Our Global Vision
+                                        focuses on
+                                        Integrating
+                                        diverse perspectives into our voting system for inclusive
+                                        decision-making"</strong> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
             <div id="content-Item1" class="widget" style="display: none;">
                 <h1>Welcome to BUSA Election Website</h1>
 
@@ -245,7 +524,8 @@
                     <h2>{{ candidate.place }}</h2>
                     <img src="{{ candidate.image.url }}" alt="Candidate Image">
                     <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span></p>
+                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes}}</span>
+                    </p>
                     {% if user.is_authenticated %}
                     <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
                         {% csrf_token %}
@@ -267,30 +547,27 @@
 
             <div id="content-Item2" class="widget" style="display: none;">
                 <h1>Welcome to BUSA Election Website</h1>
-                {% for candidate in candidates %}
-                {% if candidate.place == "Vice president" %}
-                <div class="card">
-                    <h2>{{ candidate.place }}</h2>
-                    <img src="{{ candidate.image.url }}" alt="Candidate Image">
-                    <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span></p>
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
-                        {% csrf_token %}
-
-                        <input type="submit" class="vote-button" name="vote" value="Vote">
-                    </form>
+                <div class="card-container">
+                    {% for candidate in candidates %}
+                    {% if candidate.place == "Vice President" %}
+                    <div class="card">
+                        <h2>{{ candidate.place }}</h2>
+                        <img src="{{ candidate.image.url }}" alt="Candidate Image">
+                        <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
+                        <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes}}</span>
+                        </p>
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="vote-button" name="vote" value="Vote">
+                        </form>
+                        {% endif %}
+                    </div>
                     {% endif %}
-
-
-                    <!-- Add the "Vote" button -->
-                    <!-- -->
-                    <!--<button class="vote-button" action="" method="POST">Vote</button>-->
-                    <!-- -->
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
+
 
 
             <div id="content-Item3" class="widget" style="display: none;">
@@ -301,7 +578,8 @@
                     <h2>{{ candidate.place }}</h2>
                     <img src="{{ candidate.image.url }}" alt="Candidate Image">
                     <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span></p>
+                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span>
+                    </p>
                     {% if user.is_authenticated %}
                     <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
                         {% csrf_token %}
@@ -329,7 +607,8 @@
                     <h2>{{ candidate.place }}</h2>
                     <img src="{{ candidate.image.url }}" alt="Candidate Image">
                     <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span></p>
+                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span>
+                    </p>
                     {% if user.is_authenticated %}
                     <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
                         {% csrf_token %}
@@ -351,18 +630,38 @@
     </div>
 
     {% else %}
+
+
     <main>
-        <h1>Welcome to BUSA Election Website </h1>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }} </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <div style="margin-top: 3rem;">
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }} </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <!-- Search form -->
+            <!-- Search form -->
+            <form action="{% url 'search_results' %}" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Search..." class="search-input">
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            </form>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1 id="dynamic-heading" class="h1"></h1>
+
+            </div>
+
+        </div>
 
         {% for candidate in candidates %}
-        <div class="card">
+        <div class="card" style="display: inline-flex;">
             <h2>{{ candidate.place }}</h2>
             <img src="{{ candidate.image.url }}" alt="Candidate Image">
             <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
@@ -381,18 +680,158 @@
             <!--<button class="vote-button" action="" method="POST">Vote</button>-->
             <!-- -->
         </div>
+
         {% endfor %}
 
     </main>
-    <footer>
-        <p>2023 BI TECH</p>
+
+    <footer class="align-items-center justify-content-center mt-5">
+
+        <div class="row mt-5">
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <h6 id="contact">Contact Us</h6>
+                <label for="whatsapp">whatsapp:</label>
+                <a href="https://chat.whatsapp.com/JThDckdyYYXLqsNAHELJvO"> <i class="fa-solid fa-phone"
+                        style="color: green;"></i></a>
+
+                <label for="email">email:</label>
+                <a href="https://mail.google.com/"> <i class="fa-solid fa-envelope"
+                        style="color:rgb(172, 91, 104) ;"></i></a>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <h6>Follow Us</h6>
+                <a href="https://github.com/coodic" class="text-white me-3"><i class="fab fa-github"></i></a>
+
+                <a href="https://www.instagram.com/coodic_/" class="text-white me-3"><i
+                        class="fab fa-instagram"></i></a>
+
+
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <h6>Quick Links</h6>
+                <ul class="list-unstyled">
+
+                    <li><a href="team.html">OUR TEAM</a></li>
+                    <a href="donate_link" target="donate" class="donate">Donate</a>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+        <p style="font-size: 14px; color: #fdfbfb; margin-top: 10px; text-align: center;">
+            &copy; 2024 COODIC. All Rights Reserved.
+        </p>
+
+
     </footer>
 
 
 
 
+
     {% endif %}
+
+
+
     <script>
+        // Function to animate text writing
+        function animateTextWriting(text, element) {
+            var index = 0;
+            var interval = setInterval(function () {
+                if (index <= text.length) {
+                    element.innerHTML = text.substring(0, index);
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 150); // Adjust the interval for typing speed
+        }
+
+        // Function to change the text of the h1 element
+        function changeHeadingText() {
+            var dynamicHeading = document.getElementById("dynamic-heading");
+            var greetings = [
+                "Thank you for Choosing us!",
+                "Explore our new Services!",
+                "We're here to serve you!"
+            ]; // Array of greetings
+
+            // Check if animation has been shown before
+            var animationShown = localStorage.getItem("animationShown");
+            if (!animationShown) {
+                // Show animation and set flag in local storage
+                localStorage.setItem("animationShown", true);
+                showNextGreeting(greetings, dynamicHeading);
+            } else {
+                // Animation has been shown before, display immediately
+                var currentGreeting = localStorage.getItem("currentGreeting");
+                if (!currentGreeting) {
+                    // If current greeting is not set, show the first one
+                    showNextGreeting(greetings, dynamicHeading);
+                } else {
+                    // Otherwise, continue from the last shown greeting
+                    dynamicHeading.innerHTML = currentGreeting;
+                    setTimeout(showNextGreeting.bind(null, greetings, dynamicHeading), 5000);
+                }
+            }
+        }
+
+        // Function to show the next greeting in the array
+        function showNextGreeting(greetings, dynamicHeading) {
+            if (!showNextGreeting.currentIndex || showNextGreeting.currentIndex >= greetings.length) {
+                showNextGreeting.currentIndex = 0;
+            }
+            var currentGreeting = greetings[showNextGreeting.currentIndex];
+
+            // Clear existing text
+            dynamicHeading.innerHTML = "";
+
+            // Animate typing of the greeting
+            animateTextWriting(currentGreeting, dynamicHeading);
+
+            // Increment index for next time
+            showNextGreeting.currentIndex++;
+
+            // Store current greeting in local storage
+            localStorage.setItem("currentGreeting", currentGreeting);
+        }
+
+        // Call the function initially
+        changeHeadingText();
+
+
+        // Get the search input and button
+        const searchInput = document.querySelector('.search-input');
+        const searchButton = document.querySelector('.search-button');
+
+        // Add event listener for focusing search input
+        searchInput.addEventListener('focus', function () {
+            this.classList.add('expand'); // Add class to expand input
+        });
+
+        // Add event listener for blurring search input
+        searchInput.addEventListener('blur', function () {
+            this.classList.remove('expand'); // Remove class to collapse input
+        });
+
+        // Add event listener for clicking search button
+        searchButton.addEventListener('click', function () {
+            // Trigger animation
+            searchInput.animate([
+                { transform: 'scaleX(0)' },
+                { transform: 'scaleX(1)' }
+            ], {
+                duration: 500,
+                easing: 'ease-in-out'
+            });
+        });
+
+
+
+
+
         function toggleAside() {
             var aside = document.querySelector('.aside');
             if (aside.style.maxWidth === "0px" || aside.style.maxWidth === "") {
@@ -403,15 +842,25 @@
         }
 
         function showContent(item) {
-            var contentElements = document.querySelectorAll('.widget');
-            contentElements.forEach(function (element) {
-                element.style.display = 'none';
+            // Hide the 'cartoon' div
+            var cartoonDiv = document.getElementById('cartoon');
+            if (cartoonDiv) {
+                cartoonDiv.style.display = 'none';
+            }
+
+            // Hide all content items
+            var contentDivs = document.querySelectorAll('.widget');
+            contentDivs.forEach(function (div) {
+                div.style.display = 'none';
             });
+
+            // Show the content of the selected item
             var contentElement = document.getElementById('content-' + item);
             if (contentElement) {
                 contentElement.style.display = 'block';
             }
         }
+
     </script>
     <script src="https://kit.fontawesome.com/01485634d3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
