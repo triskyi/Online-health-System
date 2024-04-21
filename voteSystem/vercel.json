@@ -1,0 +1,18 @@
+{
+    "builds": [
+        {
+            "src": "voteSystem/wsgi.py",
+            "use": "vercel/python",
+            "config": {
+                "maxLambaSize": "15mb",
+                "runtime": "python3.9"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "voteSystem/wsgi.py"
+        }
+    ]
+}
