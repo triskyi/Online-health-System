@@ -19,7 +19,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: rgb(54, 51, 51);
         }
 
 
@@ -249,6 +249,7 @@
             /* Add space around cards */
             flex-wrap: wrap;
             /* Allow cards to wrap to the next line if needed */
+            background: linear-gradient(to right, #e3dce1, #92b2be);
         }
 
 
@@ -517,37 +518,38 @@
 
 
             <div id="content-Item1" class="widget" style="display: none;">
-                <h1>Welcome to BUSA Election Website</h1>
+                <h1>Vote President</h1>
+                <div class="card-container">
+                    {% for candidate in candidates %}
+                    {% if candidate.place == "President" %}
+                    <div class="card">
+                        <h2>{{ candidate.place }}</h2>
+                        <img src="{{ candidate.image.url }}" alt="Candidate Image">
+                        <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
+                        <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes}}</span>
+                        </p>
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
+                            {% csrf_token %}
 
-                {% for candidate in candidates %}
-                {% if candidate.place == "President" %}
-                <div class="card">
-                    <h2>{{ candidate.place }}</h2>
-                    <img src="{{ candidate.image.url }}" alt="Candidate Image">
-                    <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes}}</span>
-                    </p>
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
-                        {% csrf_token %}
+                            <input type="submit" class="vote-button" name="vote" value="Vote">
+                        </form>
+                        {% endif %}
 
-                        <input type="submit" class="vote-button" name="vote" value="Vote">
-                    </form>
+
+                        <!-- Add the "Vote" button -->
+                        <!-- -->
+                        <!--<button class="vote-button" action="" method="POST">Vote</button>-->
+                        <!-- -->
+                    </div>
                     {% endif %}
-
-
-                    <!-- Add the "Vote" button -->
-                    <!-- -->
-                    <!--<button class="vote-button" action="" method="POST">Vote</button>-->
-                    <!-- -->
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
             <!-- Add content for other positions (Vice President, General Secretary, Accountant) here -->
 
             <div id="content-Item2" class="widget" style="display: none;">
-                <h1>Welcome to BUSA Election Website</h1>
+                <h1>Vote Vice President</h1>
                 <div class="card-container">
                     {% for candidate in candidates %}
                     {% if candidate.place == "Vice President" %}
@@ -572,7 +574,8 @@
 
 
             <div id="content-Item3" class="widget" style="display: none;">
-                <h1>Welcome to BUSA Election Website</h1>
+                <h1>Vote General Secretary</h1>
+                <div class="card-container"></div>
                 {% for candidate in candidates %}
                 {% if candidate.place == "General Secretary" %}
                 <div class="card">
@@ -599,35 +602,37 @@
                 {% endfor %}
             </div>
 
-
-            <div id="content-Item4" class="widget" style="display: none;">
-                <h1>Welcome to BUSA Election Website</h1>
-                {% for candidate in candidates %}
-                {% if candidate.place == "Accountant" %}
-                <div class="card">
-                    <h2>{{ candidate.place }}</h2>
-                    <img src="{{ candidate.image.url }}" alt="Candidate Image">
-                    <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
-                    <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span>
-                    </p>
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
-                        {% csrf_token %}
-
-                        <input type="submit" class="vote-button" name="vote" value="Vote">
-                    </form>
-                    {% endif %}
-
-
-                    <!-- Add the "Vote" button -->
-                    <!-- -->
-                    <!--<button class="vote-button" action="" method="POST">Vote</button>-->
-                    <!-- -->
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
         </div>
+        <div id="content-Item4" class="widget" style="display: none;">
+            <h1>Vote Accountant</h1>
+            <div class="card-container"></div>
+            {% for candidate in candidates %}
+            {% if candidate.place == "Accountant" %}
+            <div class="card">
+                <h2>{{ candidate.place }}</h2>
+                <img src="{{ candidate.image.url }}" alt="Candidate Image">
+                <p>Candidate: <span class="candidate-name">{{ candidate.name }}</span></p>
+                <p>Current Vote Count: <span class="vote-count">{{ candidate.total_votes }}</span>
+                </p>
+                {% if user.is_authenticated %}
+                <form action="{% url 'vote' candidate_id=candidate.id %}" method="post">
+                    {% csrf_token %}
+
+                    <input type="submit" class="vote-button" name="vote" value="Vote">
+                </form>
+                {% endif %}
+
+
+                <!-- Add the "Vote" button -->
+                <!-- -->
+                <!--<button class="vote-button" action="" method="POST">Vote</button>-->
+                <!-- -->
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    </div>
     </div>
 
     {% else %}
