@@ -79,12 +79,15 @@ WSGI_APPLICATION = 'voteSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
-        'USER': 'postgres',  # Corrected typo here
-        'PASSWORD': 'IPaNSfHmEnfGqsqcchntiRTvRDfGKJTD',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT':'45813',
+        'USER': 'root',
+        'PASSWORD': 'rZPwbXVIPlcoTCCWtjrfKyRcSAkoTMqv',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '40917',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
