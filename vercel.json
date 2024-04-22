@@ -26,7 +26,6 @@
     ],
     "functions": {
         "build": {
-            "handler": "build_files.build",
             "memory": 1024
         }
     }
