@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@+7_x74+*mo_%w1cd77ejpl5o!e9@vokq#4y667d&&w(en21&t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh', '127.0.0.1' 'localhost']
 
 
 # Application definition
@@ -80,10 +80,11 @@ WSGI_APPLICATION = 'voteSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'new busa',
+        'NAME': 'railway',
         'USER': 'postgres',  # Corrected typo here
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'PASSWORD': 'IPaNSfHmEnfGqsqcchntiRTvRDfGKJTD',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT':'45813',
     }
 }
 
