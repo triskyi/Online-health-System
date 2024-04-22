@@ -1,16 +1,11 @@
-#!/bin/bash
+import os
 
-# Activate virtual environment
-source C:/Users/User/Envs/votenv/Scripts/activate
-
-# Set up environment variables
-export PATH="$VIRTUAL_ENV/Scripts:$PATH"
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run migrations (if applicable)
-python manage.py migrate
-
-# Collect static files
-python manage.py collectstatic --noinput
+def build(request):
+    # Activate virtual environment
+    os.system("source /vercel/path0/venv/bin/activate")
+    # Install dependencies
+    os.system("pip install -r /vercel/path0/requirements.txt")
+    # Run migrations (if applicable)
+    os.system("python /vercel/path0/manage.py migrate")
+    # Collect static files
+    os.system("python /vercel/path0/manage.py collectstatic --noinput")

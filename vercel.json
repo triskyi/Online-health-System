@@ -10,8 +10,8 @@
             }
         },
         {
-            "src": "build_files.sh",
-            "use": "@vercel/static-build"
+            "src": "requirements.txt",
+            "use": "@vercel/python"
         }
     ],
     "routes": [
@@ -23,5 +23,11 @@
             "src": "/(.*)",
             "dest": "voteSystem/wsgi.py"
         }
-    ]
+    ],
+    "functions": {
+        "build": {
+            "handler": "build_files.build",
+            "memory": 1024
+        }
+    }
 }
