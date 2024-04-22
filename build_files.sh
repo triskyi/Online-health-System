@@ -1,10 +1,8 @@
 import os
-#new
+
 def build(request):
-    # Activate virtual environment
-    os.system("source /vercel/path0/venv/bin/activate")
     # Install dependencies
-    os.system("pip install -r /vercel/path0/requirements.txt")
+    os.system("python -m pip install -r requirements.txt")
     # Run migrations (if applicable)
     os.system("python /vercel/path0/manage.py migrate")
     # Collect static files
