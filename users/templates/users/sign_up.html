@@ -1,0 +1,72 @@
+{% extends 'users/basel.html' %}
+
+{% block content %}
+   
+
+    <div class="form-container">
+        
+        <div class="form-section">
+            <h2>Sign Up to Health System</h2>
+            {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="alert-{{ message.tags }}">
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-fields">
+                    <!-- Left Column -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            {{ form.username }}
+                            {{ form.username.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">Email:</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+                            {{ form.phone_number }}
+                            {{ form.phone_number.errors }}
+                        </div>
+                    </div>
+                    <!-- Right Column -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="{{ form.role.id_for_label }}">Role:</label>
+                            {{ form.role }}
+                            {{ form.role.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}">Password:</label>
+                            {{ form.password1 }}
+                            {{ form.password1.errors }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                            {{ form.password2 }}
+                            {{ form.password2.errors }}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="btn btn-primary w-full max-w-xs">Sign Up</button>
+                  </div>
+                  <div class="form-footer">
+                    <p>Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+                    <p>Back to <a href="{% url 'index' %}">Home</a>.</p>
+                </div>
+                  
+            </form>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard | HealthCenter</title>
+    <script src="https://kit.fontawesome.com/01485634d3.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #154360;
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar a {
+            color: white;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            flex-grow: 1;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            color: darkblue;
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .profile-img {
+            width: 40px; /* Adjust width as needed */
+            height: 40px; /* Adjust height to match width */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            margin-right: 8px; /* Space between image and text */
+            border: 2px solid #fff; /* Optional: Adds a border around the image */
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .btn-card {
+            background-color: #909497;
+            border-radius: 25px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-bottom: 15px;
+            display: block;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .btn-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .chat-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            max-width: 70%;
+        }
+
+        .chat-message.self {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .message-text {
+            word-wrap: break-word;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .input-group {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .btn-primary {
+            min-width: 80px;
+        }
+
+        .footer {
+            background-color: whitesmoke;
+            color: #6f6464;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-radius: 25px;
+        }
+               /* General message styling */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.messages li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Success message */
+.messages .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Error message */
+.messages .alert-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Info message */
+.messages .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Warning message */
+.messages .alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+    </style>
+</head>
+
+<body>
+    <div class="sidebar d-flex flex-column p-3">
+        <h3 class=""></h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-user-md"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-user-md"></i> Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-notes-medical"></i> Medical Records</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-file-prescription"></i> Prescriptions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-file-alt"></i> Reports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <!-- Navbar or Header section -->
+        <nav class="navbar navbar-expand-lg navbar-light "
+            style="background-color: #909497; border-radius: 25px; ">
+            <a class="navbar-brand" href="#">VuraHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-auto">
+                    <input class="form-control form-control-search me-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                </form>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ doctor.image.url }}" alt="Profile" class="profile-img"> {{ doctor.doctor.username }}
+                    </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'doctor_profile' %}">Profile</a></li>
+
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container" id="content">
+            {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="alert-{{ message.tags }}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="container" id="content">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="card btn-card" id="patients-card">
+                <div class="card-body text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-user-injured fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h5 class="card-title">Patients</h5>
+                    <p class="card-text">View and manage patients</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="#" class="card btn-card" id="medical-records-card">
+                <div class="card-body text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-notes-medical fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h5 class="card-title">Medical Records</h5>
+                    <p class="card-text">Access patient medical records</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="#" class="card btn-card" id="prescriptions-card">
+                <div class="card-body text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-file-prescription fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h5 class="card-title">Prescriptions</h5>
+                    <p class="card-text">Manage patient prescriptions</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="#" class="card btn-card" id="telemedicine-card">
+                <div class="card-body text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-video fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h5 class="card-title">Telemedicine</h5>
+                    <p class="card-text">Video consultations with doctors</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Patient Details Section (Initially Hidden) -->
+<div class="container hidden" id="patient-section">
+    <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-primary btn-back" onclick="goBack()">
+            <i class="fas fa-chevron-left me-2"></i>Back to Menu
+        </button>
+        <h2 class="ms-auto">Patient Details</h2>
+    </div>
+    <div id="patient-details-content">
+        <!-- Dynamic patient information will be inserted here -->
+    </div>
+</div>
+
+<!-- Medical Records Section (Initially Hidden) -->
+<div class="container hidden" id="medical-records-section">
+    <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-primary btn-back" onclick="goBack()">
+            <i class="fas fa-chevron-left me-2"></i>Back to Menu
+        </button>
+        <h2 class="ms-auto">Medical Records</h2>
+    </div>
+    <!-- Dynamic medical records content -->
+</div>
+
+<!-- Prescriptions Section (Initially Hidden) -->
+<div class="container hidden" id="prescriptions-section">
+    <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-primary btn-back" onclick="goBack()">
+            <i class="fas fa-chevron-left me-2"></i>Back to Menu
+        </button>
+        <h2 class="ms-auto">Prescriptions</h2>
+    </div>
+    <!-- Dynamic prescriptions content -->
+</div>
+
+<!-- Telemedicine Section (Initially Hidden) -->
+<div class="container hidden" id="telemedicine-section">
+    <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-primary btn-back" onclick="goBack()">
+            <i class="fas fa-chevron-left me-2"></i>Back to Menu
+        </button>
+        <h2 class="ms-auto">Telemedicine</h2>
+    </div>
+    <!-- Dynamic telemedicine content -->
+</div>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <p>&copy; 2024 HealthCenter. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Event listener for the Patients card
+        document.getElementById('patients-card').addEventListener('click', function (event) {
+            event.preventDefault();
+            toggleSection('patient-section');
+        });
+    
+        // Event listener for the Medical Records card
+        document.getElementById('medical-records-card').addEventListener('click', function (event) {
+            event.preventDefault();
+            toggleSection('medical-records-section');
+        });
+    
+        // Event listener for the Prescriptions card
+        document.getElementById('prescriptions-card').addEventListener('click', function (event) {
+            event.preventDefault();
+            toggleSection('prescriptions-section');
+        });
+    
+        // Event listener for the Telemedicine card
+        document.getElementById('telemedicine-card').addEventListener('click', function (event) {
+            event.preventDefault();
+            toggleSection('telemedicine-section');
+        });
+    
+        function toggleSection(sectionId) {
+            // Hide the main content
+            document.getElementById('content').classList.add('hidden');
+    
+            // Hide all other sections
+            var sections = document.getElementsByClassName('container');
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].id !== 'content') {
+                    sections[i].classList.add('hidden');
+                }
+            }
+    
+            // Show the selected section
+            var sectionToShow = document.getElementById(sectionId);
+            sectionToShow.classList.remove('hidden');
+        }
+    
+        function goBack() {
+            // Hide all sections except the main content
+            var sections = document.getElementsByClassName('container');
+            for (var i = 0; i < sections.length; i++) {
+                if (sections[i].id !== 'content') {
+                    sections[i].classList.add('hidden');
+                }
+            }
+    
+            // Show the main content
+            document.getElementById('content').classList.remove('hidden');
+        }
+    });
+    
+</script>
+    </body>
+
+</html>

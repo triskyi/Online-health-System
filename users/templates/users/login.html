@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div class="form-container">
+        <div class="form-section">
+            <h2>Login</h2>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="alert-{{ message.tags }}">
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="PATIENT">Patient</option>
+                        <option value="DOCTOR">Doctor</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="SUPPORT">Support Staff</option>
+                        <option value="PHARMACIST">Pharmacist</option>
+                    </select>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="form-footer">
+                <p>Forgot your password? <a href="#">Reset it here</a>.</p>
+                <p>New to HealthCenter? <a href="{% url 'sign_up' %}">Register now</a>.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
